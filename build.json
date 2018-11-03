@@ -10,7 +10,7 @@
       "commit": true,
       "pull": true,
       "changes": [
-         "Volume": {"/home/{{user `currentuser`}}/code": "/tmp/code"} 
+         "Volumes": {"/home/{{user `currentuser`}}/code": "/tmp/code"} 
       ]
    }],
   
