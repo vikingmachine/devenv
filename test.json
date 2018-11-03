@@ -1,0 +1,32 @@
+{
+  "builders": [{
+      "type": "docker",
+      "image": "centos",
+      "commit": true,
+      "pull": true
+    }],
+  "provisioners": [{
+      "type": "shell",
+        "inline": [
+          "yum -y update",
+          "yum -y install curl nano unzip wget openssl",
+          "curl -O https://bootstrap.pypa.io/get-pip.py",
+          "python get-pip.py --user",
+          "export PATH=~/.local/bin:$PATH",
+          "source ~/.bash_profile",
+          "pip install awscli --upgrade --user",
+          "wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip",
+          "unzip terraform_0.11.8_linux_amd64.zip",
+          "mv terraform /usr/local/bin/",
+          "echo 'source session-tool.sh' >>~/.bash_profile"
+        ]
+    }],
+    "post-processors": [
+      [{
+          "type": "docker-tag",
+          "repository": "ewilliams",
+          "tag": "ewilliams"
+        }]
+    ]
+
+}
