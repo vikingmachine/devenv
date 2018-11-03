@@ -31,7 +31,7 @@
    "post-processors": [
       [{
           "type": "docker-tag",
-          "repository": "{{user `currentuser`}}",
+          "repository": "{{user `currentuser`}}/{{user `currentuser`}}",
           "tag": "{{user `currentuser`}}"
         }]
     ]
