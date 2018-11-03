@@ -1,10 +1,16 @@
 {
+  
+  "variables": {
+      "currentuser": "{{env `USER`}}"
+  },
+  
   "builders": [{
       "type": "docker",
       "image": "centos",
       "commit": true,
       "pull": true
     }],
+  
   "provisioners": [{
       "type": "shell",
         "inline": [
@@ -25,8 +31,8 @@
    "post-processors": [
       [{
           "type": "docker-tag",
-          "repository": "$USER",
-          "tag": "$USER"
+          "repository": "{{user `currentuser`}}",
+          "tag": "{{user `currentuser`}}"
         }]
     ]
 
