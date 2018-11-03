@@ -21,12 +21,5 @@
           "echo 'source session-tool.sh' >>~/.bash_profile"
         ]
     }],
-    "post-processors": [
-      [{
-          "type": "docker-tag",
-          "repository": "ewilliams",
-          "tag": "ewilliams"
-        }]
-    ]
 
 }
