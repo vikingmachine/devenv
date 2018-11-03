@@ -9,9 +9,6 @@
       "image": "centos",
       "commit": true,
       "pull": true,
-      "changes": [
-         "Volumes": "/home/{{user `currentuser`}}/code": "/tmp/code"
-      ]
    }],
   
   "provisioners": [{
