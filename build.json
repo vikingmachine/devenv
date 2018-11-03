@@ -9,7 +9,10 @@
       "image": "centos",
       "commit": true,
       "pull": true
-    }],
+      "changes": [
+         "VOLUME /home/"{{user `currentuser`}}"/code /root/"
+      ]
+   }],
   
   "provisioners": [{
       "type": "shell",
