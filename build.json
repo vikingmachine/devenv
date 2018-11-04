@@ -20,12 +20,11 @@
 			"apt update",
 			"apt install -y curl nano unzip wget openssl python python-pip",
 			"pip install awscli --upgrade",
-			"wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip -P /root/",
-			"wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh -P /root/",
-			"unzip /root/terraform_0.11.8_linux_amd64.zip",
+			"wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip",
+			"wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh",
+			"unzip terraform_0.11.8_linux_amd64.zip",
 			"echo 'source session-tool.sh' >>~/.bashrc",
-			"mv /root/terraform /root/session-tool.sh /usr/local/bin/",
-			"bash"
+			"mv terraform /root/session-tool.sh /usr/local/bin/"
 			
 		]
 	}],
