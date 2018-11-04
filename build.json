@@ -17,8 +17,8 @@
 	"provisioners": [{
 		"type": "shell",
 		"inline": [
-			"apt-get -y update",
-			"apt-get -y install curl nano unzip wget openssl",
+			"apt-get update",
+			"apt-get install curl nano unzip wget openssl",
 			"curl -O https://bootstrap.pypa.io/get-pip.py",
 			"python get-pip.py --user",
 			"export PATH=~/.local/bin:$PATH",
@@ -28,7 +28,7 @@
 			"mv terraform ~/.local/bin/",
 			"echo 'source session-tool.sh' >>~/.bash_profile",
 			"rm -f get-pip.py terraform_0.11.8_linux_amd64.zip",
-      "source ~/.bash_profile"
+                        "source ~/.bash_profile"
 		]
 	}],
 
