@@ -9,7 +9,7 @@
 
 	"builders": [{
 		"type": "docker",
-		"image": "ubuntu",
+		"image": "centos",
 		"commit": true,
 		"pull": true,
 		"volumes": {
@@ -20,8 +20,8 @@
 	"provisioners": [{
 		"type": "shell",
 		"inline": [
-			"apt update",
-			"apt install -y curl nano unzip wget openssl python python-pip",
+			"yum update",
+			"yum install -y curl nano unzip wget openssl python python-pip",
 			"pip install awscli --upgrade",
 			"wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip",
 			"wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh",
