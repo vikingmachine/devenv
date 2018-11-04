@@ -17,8 +17,8 @@
 	"provisioners": [{
 		"type": "shell",
 		"inline": [
-			"apt-get update",
-			"apt-get install curl nano unzip wget openssl",
+			"apt-get -y update",
+			"apt-get -y install curl nano unzip wget openssl",
 			"curl -O https://bootstrap.pypa.io/get-pip.py",
 			"python get-pip.py --user",
 			"export PATH=~/.local/bin:$PATH",
