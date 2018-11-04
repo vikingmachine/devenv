@@ -10,8 +10,7 @@
       "commit": true,
       "pull": true,
       "changes": [
-         "USER {{user `currentuser`}}",
-         "VOLUME /home/evan/code /tmp/code"
+         "VOLUME /home/evan /tmp/code"
       ]
    }],
   
