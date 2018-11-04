@@ -10,7 +10,7 @@
 		"commit": true,
 		"pull": true,
 		"volumes": {
-			"/home/evan/code": "/tmp/code:ro"
+			"~/.bash_history":"/root/.bash_history"
 		}
 	}],
 
@@ -24,8 +24,9 @@
 			"wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh",
 			"unzip terraform_0.11.8_linux_amd64.zip",
 			"mv terraform session-tool.sh /usr/local/bin/",
-			"echo 'source session-tool.sh' >>~/.profile",
-			"rm terraform_0.11.8_linux_amd64.zip"
+			"rm terraform_0.11.8_linux_amd64.zip",
+			"echo 'source session-tool.sh' >>~/.bashrc"			
+			
 		]
 	}],
 
