@@ -25,8 +25,7 @@
 			"unzip terraform_0.11.8_linux_amd64.zip",
 			"mv terraform session-tool.sh /usr/local/bin/",
 			"echo 'source session-tool.sh' >>~/.profile",
-			"rm terraform_0.11.8_linux_amd64.zip",
-                        "source ~/.profile"
+			"rm terraform_0.11.8_linux_amd64.zip"
 		]
 	}],
 
