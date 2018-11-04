@@ -1,5 +1,14 @@
 #!/bin/bash
 
+echo Please enter your AWS Access Key ID:
+read aak
+echo Please enter your AWS Secret Access Key:
+read asak
+
+export AWS_ACCESS_KEY_ID="$aak"
+export AWS_SECRET_ACCESS_KEY="$asak"
+
+
 curl -fsSL https://get.docker.com -o get-docker.sh
 sh get-docker.sh
 sudo systemctl enable docker
