@@ -10,7 +10,7 @@
       "commit": true,
       "pull": true,
       "changes": [
-         "VOLUME /home/evan /tmp/code"
+         "VOLUME /home/evan/code /tmp/code"
       ]
    }],
   
