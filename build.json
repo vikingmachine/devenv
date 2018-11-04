@@ -10,7 +10,7 @@
 		"commit": true,
 		"pull": true,
 		"volumes": {
-			"~/.bash_history":"/root/.bash_history"
+			"/home/{{user `currentuser`}}/.bash_history":"/root/.bash_history"
 		}
 	}],
 
