@@ -9,9 +9,9 @@
 		"image": "ubuntu",
 		"commit": true,
 		"pull": true,
-		"changes": [{
-			"VOLUMES": "/home/evan/code /tmp/code"
-		}]
+		"volumes": [
+			"/home/evan/code: /tmp/code"
+                ]
 	}],
 
 	"provisioners": [{
