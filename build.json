@@ -8,7 +8,10 @@
       "type": "docker",
       "image": "centos",
       "commit": true,
-      "pull": true
+      "pull": true,
+      "changes": [
+         "volume /home/evan/code /tmp/code"
+      ]
    }],
   
   "provisioners": [{
