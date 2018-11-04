@@ -24,7 +24,7 @@
 			"wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh",
 			"unzip terraform_0.11.8_linux_amd64.zip",
 			"echo 'source session-tool.sh' >>~/.bashrc",
-			"mv terraform /root/session-tool.sh /usr/local/bin/"
+			"mv terraform session-tool.sh /usr/local/bin/"
 			
 		]
 	}],
