@@ -17,16 +17,16 @@
 	"provisioners": [{
 		"type": "shell",
 		"inline": [
-			"apt-get -y update",
-			"apt-get -y install curl nano unzip wget openssl python3 python3-pip",
-			"export PATH=~/.local/bin:$PATH",
-			"pip3 install awscli --upgrade --user",
+			"apt update",
+			"apt install -y curl nano unzip wget openssl python python-pip",
+			"pip install awscli --upgrade",
 			"wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip",
+			"wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh",
 			"unzip terraform_0.11.8_linux_amd64.zip",
-			"mv terraform ~/.local/bin/",
-			"echo 'source session-tool.sh' >>~/.bash_profile",
-			"rm -f get-pip.py terraform_0.11.8_linux_amd64.zip",
-                        "source ~/.bash_profile"
+			"mv terraform session-tool.sh /usr/local/bin/",
+			"echo 'source session-tool.sh' >>~/.profile",
+			"rm terraform_0.11.8_linux_amd64.zip",
+                        "source ~/.profile"
 		]
 	}],
 
