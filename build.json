@@ -21,8 +21,8 @@
 		"type": "shell",
 		"inline": [
 			"yum -y update",
-			"sudo yum install epel-release",
-			"yum install -y curl nano unzip wget openssl python python-pip",
+			"yum -y install epel-release",
+			"yum -y install curl nano unzip wget openssl python python-pip",
 			"pip install awscli --upgrade",
 			"wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip",
 			"wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh",
