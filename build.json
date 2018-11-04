@@ -2,6 +2,9 @@
 
 	"variables": {
 		"currentuser": "{{env `USER`}}"
+		"aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+                "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+                "region": ""
 	},
 
 	"builders": [{
@@ -24,8 +27,12 @@
 			"wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh",
 			"unzip terraform_0.11.8_linux_amd64.zip",
 			"echo 'source session-tool.sh' >>~/.bashrc",
-			"mv terraform session-tool.sh /usr/local/bin/"
-			
+			"mv terraform session-tool.sh /usr/local/bin/",
+			"aws configure --profile awsops set aws_access_key_id {{user `aws_access_key`}} && history -d $((HISTCMD-1))",
+			"aws configure --profile awsops set aws_secret_access_key {{user `aws_secret_key`}} && history -d $((HISTCMD-1))",
+			"aws configure set default.session_tool_default_profile awsops",
+			"aws configure set session-tool_bucketname bf-aws-tools-session-tool --profile awsops",
+			"get_session -d"
 		]
 	}],
 
