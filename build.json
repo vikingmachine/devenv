@@ -10,7 +10,7 @@
 		"commit": true,
 		"pull": true,
 		"volumes": {
-			"/home/evan/code": "/tmp/code"
+			"/home/evan/code": "/tmp/code:ro"
 		}
 	}],
 
