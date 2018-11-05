@@ -28,7 +28,7 @@
 	"post-processors": [
 		[{
 			"type": "docker-tag",
-			"repository": "{{user `currentuser`}}",
+			"repository": "local",
 			"tag": "aws-dev"
 		}]
 	]
