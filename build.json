@@ -4,14 +4,10 @@
 		"currentuser": "{{env `USER`}}",
 		"aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
                 "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
-                "region": ""
 	},
 
 	"builders": [{
 		"type": "docker",
-		"access_key": "{{user `aws_access_key`}}",
-    		"secret_key": "{{user `aws_secret_key`}}",
-    		"region": "us-east-1",
 		"image": "ubuntu",
 		"commit": true,
 		"pull": true,
