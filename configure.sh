@@ -15,7 +15,7 @@ aws configure --profile awsops set aws_access_key_id "$aws_access_key"
 aws configure --profile awsops set aws_secret_access_key "$aws_secret_key"
 aws configure set default.session_tool_default_profile awsops
 aws configure set session-tool_bucketname bf-aws-tools-session-tool --profile awsops
-get_session -d
+# get_session -d
 
 #Setup BLESS for access to AWS servers.
 
