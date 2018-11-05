@@ -17,6 +17,6 @@ wget https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json
 wget https://raw.githubusercontent.com/vikingmachine/devenv/master/configure.sh
 unzip packer_1.3.2_linux_amd64.zip
 sudo mv packer /usr/local/bin/
-packer build build.json
+PACKER_LOG=1 packer build build.json
 docker run --name dev -it $USER:aws-dev
 
