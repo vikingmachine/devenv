@@ -3,7 +3,7 @@
 # Setup Basefarm Session Tools
 
 apt update
-apt -y install curl nano unzip wget openssl python3 python3-pip
+apt -y install curl nano unzip wget openssl python3 python3-pip openssh-client
 pip3 install awscli --upgrade
 wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
 wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
