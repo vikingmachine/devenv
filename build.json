@@ -19,8 +19,8 @@
 	"provisioners": [{
 		"type": "shell",
     		"environment_vars": [
-      			"ACCESS_KEY={{user `aws_access_key`}}",
-      			"SECRET_KEY={{user `aws_secret_key`}}"
+      			"AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
+      			"AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}"
     		],
 		"script": "./configure.sh"
 	}],
