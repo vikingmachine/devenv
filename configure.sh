@@ -15,7 +15,14 @@ aws configure --profile awsops set aws_access_key_id $AWS_ACCESS_KEY_ID
 aws configure --profile awsops set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_ID
 aws configure set default.session_tool_default_profile awsops
 aws configure set session-tool_bucketname bf-aws-tools-session-tool --profile awsops
-# get_session -d
+
+# Setup BLESS
+
+eval `ssh-agent`
+ssh-keygen -f ~/.ssh/blessid -b 4096 -t rsa -C 'Key for BLESS certificate' -N ''
+ssh-keygen -y -f ~/.ssh/blessid > ~/.ssh/blessid.pub
+touch ~/.ssh/blessid-cert.pub
+ln -s ~/.ssh/blessid-cert.pub ~/.ssh/blessid-cert
 
 
 
