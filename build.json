@@ -20,7 +20,9 @@
 		"type": "shell",
     		"environment_vars": [
       			"AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
-      			"AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}"
+      			"AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}",
+			"HOSTUSER={{user `currentuser`}}"
+			
     		],
 		"script": "./configure.sh"
 	}],
