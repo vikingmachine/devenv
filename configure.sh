@@ -33,4 +33,15 @@ ssh-keygen -y -f ~/.ssh/blessid > ~/.ssh/blessid.pub
 touch ~/.ssh/blessid-cert.pub
 ln -s ~/.ssh/blessid-cert.pub ~/.ssh/blessid-cert
 
+# Make sure that you don't get SSH warnings when logging in to a bastion server (as they sit behind a load balancer)
+touch ~/.ssh/config 
+cat > ~/.ssh/config <<"TEXT"
+
+Host *.transhub.io
+	StrictHostKeyChecking no
+	UserKnownHostsFile /dev/null
+	ServerAliveInterval 50
+
+TEXT
+
 
