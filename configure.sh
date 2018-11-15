@@ -21,7 +21,7 @@ echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
 #get_session -i /root/secrets.csv -b bf-aws-tools-session-tool -d
 
 # Setup BLESS
-eval `ssh-agent`
+
 mkdir /opt/awsops && cd /opt/awsops
 git clone https://github.com/lyft/python-blessclient.git && cd python-blessclient && make client
 sed -i "s/default='iad'/default='EU'/" blessclient/client.py
