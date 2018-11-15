@@ -29,5 +29,5 @@ wget https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json
 wget https://raw.githubusercontent.com/vikingmachine/devenv/master/configure.sh
 
 sudo PACKER_LOG=1 packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" build.json
-sudo docker run --name bf-aws-dev -it local:aws-dev /bin/bash
+sudo docker run --name bf-aws-dev -it local:aws-dev /bin/bash -c "source /usr/local/bin/session-tool.sh; get_session -i /root/secrets.csv -b bf-aws-tools-session-tool -d"
 
