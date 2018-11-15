@@ -34,6 +34,7 @@ touch ~/.ssh/blessid-cert.pub
 ln -s ~/.ssh/blessid-cert.pub ~/.ssh/blessid-cert
 echo 'alias bless=/opt/awsops/python-blessclient/blessclient.run' >>~/.bashrc 
 
+
 # Make sure that you don't get SSH warnings when logging in to a bastion server (as they sit behind a load balancer)
 touch ~/.ssh/config 
 cat > ~/.ssh/config <<"TEXT"
