@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash -i
 
 # Setup Basefarm Session Tools
 
@@ -16,7 +16,6 @@ echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
 #aws configure --profile awsops set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_ID
 #aws configure set default.session_tool_default_profile awsops
 #aws configure set session-tool_bucketname bf-aws-tools-session-tool --profile awsops
-
 get_session -i /root/secrets.csv -b bf-aws-tools-session-tool -d
 
 # Setup BLESS
