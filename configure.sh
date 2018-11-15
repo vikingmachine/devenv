@@ -9,7 +9,7 @@ wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd6
 wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
 unzip terraform_0.11.8_linux_amd64.zip
 echo 'source session-tool.sh' >>~/.bashrc
-source ~/.bashrc
+source /root/.bashrc
 mv terraform session-tool.sh /usr/local/bin/
 echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
 #aws configure --profile awsops set aws_access_key_id $AWS_ACCESS_KEY_ID
