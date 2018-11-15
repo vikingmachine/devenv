@@ -15,7 +15,7 @@ else
 fi
 
 
-if [ -x "$(command packer -v)" ]; then
+if [ -x "$(command -v packer)" ]; then
     echo "Packer is already installed"
 else
    wget https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_linux_amd64.zip
