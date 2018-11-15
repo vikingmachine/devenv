@@ -10,7 +10,9 @@ wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-
 unzip terraform_0.11.8_linux_amd64.zip
 echo 'source session-tool.sh' >>~/.bashrc
 echo 'eval `ssh-agent`' >>~/.bashrc
-source ~/.bashrc
+#source ~/.bashrc
+echo "export hostuser=$hostuser" >>~/.bashrc
+
 mv terraform session-tool.sh /usr/local/bin/
 echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
 #aws configure --profile awsops set aws_access_key_id $AWS_ACCESS_KEY_ID
