@@ -10,9 +10,10 @@ wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-
 unzip terraform_0.11.8_linux_amd64.zip
 echo 'source session-tool.sh' >>~/.bashrc
 echo 'eval `ssh-agent`' >>~/.bashrc
-#source ~/.bashrc
 echo "export hostuser=$hostuser" >>~/.bashrc
+source ~/.bashrc
 
+#Setup terraform and AWS CLI / Session tools
 mv terraform session-tool.sh /usr/local/bin/
 echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
 #aws configure --profile awsops set aws_access_key_id $AWS_ACCESS_KEY_ID
@@ -22,13 +23,14 @@ echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
 #source /usr/local/bin/session-tool.sh
 #get_session -i /root/secrets.csv -b bf-aws-tools-session-tool -d
 
-# Setup BLESS
+# Setup Bless. This is missing the config of blessclient.cfg. Do that step manually for now
 
 mkdir /opt/awsops && cd /opt/awsops
 git clone https://github.com/lyft/python-blessclient.git && cd python-blessclient && make client
 sed -i "s/default='iad'/default='EU'/" blessclient/client.py
 cp blessclient.cfg.sample blessclient.cfg
 
+#Setup keys for Bless and some handy alias's
 
 ssh-keygen -f ~/.ssh/blessid -b 4096 -t rsa -C 'Key for BLESS certificate' -N ''
 ssh-keygen -y -f ~/.ssh/blessid > ~/.ssh/blessid.pub
