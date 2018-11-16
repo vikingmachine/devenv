@@ -9,17 +9,17 @@ wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd6
 wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
 unzip terraform_0.11.8_linux_amd64.zip
 
-#Configure .bashrc
+#Configure .bashrc alias and for session tools script + bless ssh-agent to run on boot.
 
 
-cat <<EOF >> ~/.bashrc
+cat <<TEXT >> ~/.bashrc
 alias prod="ssh -A $HOSTUSER@linbast.transhub.io"
 alias stage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
 alias test="ssh -A $HOSTUSER@linbast.test.transhub.io"
 alias bless="/opt/awsops/python-blessclient/blessclient.run"
 source session-tool.sh
 eval `ssh-agent`
- EOF
+TEXT
  
 
 
