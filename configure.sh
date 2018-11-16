@@ -22,7 +22,6 @@ source session-tool.sh
 eval `ssh-agent`
  EOF
  
-source ~/.bashrc
 
 
 #Setup terraform and AWS CLI / Session tools
