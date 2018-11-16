@@ -16,8 +16,7 @@ cat <<EOF >> ~/.bashrc
 alias prod="ssh -A $HOSTUSER@linbast.transhub.io"
 alias stage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
 alias test="ssh -A $HOSTUSER@linbast.test.transhub.io"
-alias prod="ssh -A $HOSTUSER@linbast.transhub.io"
-alias bless=/opt/awsops/python-blessclient/blessclient.run
+alias bless="/opt/awsops/python-blessclient/blessclient.run"
 source session-tool.sh
 eval `ssh-agent`
  EOF
