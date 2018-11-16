@@ -18,10 +18,9 @@ alias stage="ssh -o StrictHostKeyChecking=no -A $HOSTUSER@linbast.stage.transhub
 alias test="ssh -o StrictHostKeyChecking=no -A $HOSTUSER@linbast.test.transhub.io"
 alias bless="/opt/awsops/python-blessclient/blessclient.run"
 source session-tool.sh
-eval "$(ssh-agent -s)"
 TEXT
 
-echo 'eval "$(ssh-agent -s)"' >> ~/.bashrc
+echo 'eval `ssh-agent`' >> ~/.bashrc
  
 
 
@@ -43,7 +42,7 @@ mkdir /opt/awsops && cd /opt/awsops
 git clone https://github.com/lyft/python-blessclient.git && cd python-blessclient && make client
 sed -i "s/default='iad'/default='EU'/" blessclient/client.py
 cp blessclient.cfg.sample blessclient.cfg
-eval "$(ssh-agent -s)"
+
 
 #Setup keys for Bless.
 
