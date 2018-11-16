@@ -1,7 +1,7 @@
 {
 
 	"variables": {
-		"currentuser": "{{env `HOSTUSER`}}",
+		"hostuser": "",
     		"aws_access_key": "",
    		"aws_secret_key": ""
 	},
@@ -21,7 +21,7 @@
     		"environment_vars": [
       			"AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
       			"AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}",
-			"HOSTUSER={{user `currentuser`}}"
+			"HOSTUSER={{user `hostuser`}}"
 			
     		],
 		"script": "./configure.sh"
