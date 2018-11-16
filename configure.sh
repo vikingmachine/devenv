@@ -13,13 +13,15 @@ unzip terraform_0.11.8_linux_amd64.zip
 
 
 cat <<TEXT >> ~/.bashrc
-alias prod="ssh -A $HOSTUSER@linbast.transhub.io"
-alias stage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
-alias test="ssh -A $HOSTUSER@linbast.test.transhub.io"
+alias prod="ssh -o StrictHostKeyChecking=no -A $HOSTUSER@linbast.transhub.io"
+alias stage="ssh -o StrictHostKeyChecking=no -A $HOSTUSER@linbast.stage.transhub.io"
+alias test="ssh -o StrictHostKeyChecking=no -A $HOSTUSER@linbast.test.transhub.io"
 alias bless="/opt/awsops/python-blessclient/blessclient.run"
 source session-tool.sh
-eval `ssh-agent`
+eval "$(ssh-agent -s)"
 TEXT
+
+echo 'eval "$(ssh-agent -s)"' >> ~/.bashrc
  
 
 
@@ -41,7 +43,7 @@ mkdir /opt/awsops && cd /opt/awsops
 git clone https://github.com/lyft/python-blessclient.git && cd python-blessclient && make client
 sed -i "s/default='iad'/default='EU'/" blessclient/client.py
 cp blessclient.cfg.sample blessclient.cfg
-eval `ssh-agent`
+eval "$(ssh-agent -s)"
 
 #Setup keys for Bless.
 
@@ -59,6 +61,12 @@ Host *.transhub.io
 	UserKnownHostsFile /dev/null
 	ServerAliveInterval 50
 	User "$HOSTUSER"
+	
+Host github.com
+        User git
+        Hostname github.com
+        PreferredAuthentications publickey
+        IdentityFile ~/.ssh/github_rsa	
 
 TEXT
 
