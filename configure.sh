@@ -14,7 +14,6 @@ unzip terraform_0.11.8_linux_amd64.zip
 mv ~/.bashrc ~/.bashrc.default
 cat <<TEXT >> ~/.bashrc
 . ~/.bashrc.default
-eval ssh-agent
 alias sshprod="ssh -A $HOSTUSER@linbast.transhub.io"
 alias sshstage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
 alias sshtest="ssh -A $HOSTUSER@linbast.test.transhub.io"
@@ -22,6 +21,8 @@ alias bless="/opt/awsops/python-blessclient/blessclient.run"
 source /usr/local/bin/session-tool.sh
 get_session -i "/root/secrets.csv" -b "bf-aws-tools-session-tool" -d
 TEXT
+
+echo "eval `ssh-agent`" >> ~/.bashrc
 
 
  
