@@ -11,8 +11,9 @@ unzip terraform_0.11.8_linux_amd64.zip
 
 #Configure .bashrc alias and for session tools script + bless ssh-agent to run on boot.
 
-
+mv ~/.bashrc ~/.bashrc.default
 cat <<TEXT >> ~/.bashrc
+. ~/.bashrc.default
 alias prod="ssh -o StrictHostKeyChecking=no -A $HOSTUSER@linbast.transhub.io"
 alias stage="ssh -o StrictHostKeyChecking=no -A $HOSTUSER@linbast.stage.transhub.io"
 alias test="ssh -o StrictHostKeyChecking=no -A $HOSTUSER@linbast.test.transhub.io"
