@@ -11,17 +11,16 @@ unzip terraform_0.11.8_linux_amd64.zip
 
 #Configure .bashrc alias and for session tools script + bless ssh-agent to run on boot.
 
-#mv ~/.bashrc ~/.bashrc.default
-#cat <<TEXT >> ~/.bashrc
-#. ~/.bashrc.default
-#eval ssh-agent
-#alias prod="ssh -A $HOSTUSER@linbast.transhub.io"
-#alias stage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
-#alias test="ssh -A $HOSTUSER@linbast.test.transhub.io"
-#alias bless="/opt/awsops/python-blessclient/blessclient.run"
-#source /usr/local/bin/session-tool.sh
-#alias bfsession='get_session -i "/root/secrets.csv" -b "bf-aws-tools-session-tool" -d'
-#TEXT
+mv ~/.bashrc ~/.bashrc.default
+cat <<TEXT >> ~/.bashrc
+. ~/.bashrc.default
+eval ssh-agent
+alias sshprod="ssh -A $HOSTUSER@linbast.transhub.io"
+alias sshstage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
+alias sshtest="ssh -A $HOSTUSER@linbast.test.transhub.io"
+alias bless="/opt/awsops/python-blessclient/blessclient.run"
+source /usr/local/bin/session-tool.sh
+TEXT
 
 
  
@@ -31,6 +30,7 @@ unzip terraform_0.11.8_linux_amd64.zip
 
 mv terraform session-tool.sh /usr/local/bin/
 echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
+get_session -i "/root/secrets.csv" -b "bf-aws-tools-session-tool" -d
 #aws configure --profile awsops set aws_access_key_id $AWS_ACCESS_KEY_ID
 #aws configure --profile awsops set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_ID
 #aws configure set default.session_tool_default_profile awsops
