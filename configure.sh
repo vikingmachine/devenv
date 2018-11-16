@@ -22,7 +22,7 @@ source /usr/local/bin/session-tool.sh
 get_session -i "/root/secrets.csv" -b "bf-aws-tools-session-tool" -d
 TEXT
 
-echo "eval `ssh-agent`" >> ~/.bashrc
+echo 'eval `ssh-agent`' >> ~/.bashrc
 
 
  
