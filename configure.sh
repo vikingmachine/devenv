@@ -10,7 +10,6 @@ wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-
 unzip terraform_0.11.8_linux_amd64.zip
 echo 'source session-tool.sh' >>~/.bashrc
 echo 'eval `ssh-agent`' >>~/.bashrc
-echo "export HOSTUSER=$HOSTUSER" >>~/.bashrc
 source ~/.bashrc
 
 #Setup terraform and AWS CLI / Session tools
@@ -21,7 +20,7 @@ echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
 #aws configure set default.session_tool_default_profile awsops
 #aws configure set session-tool_bucketname bf-aws-tools-session-tool --profile awsops
 #source /usr/local/bin/session-tool.sh
-#get_session -i /root/secrets.csv -b bf-aws-tools-session-tool -d
+get_session -i /root/secrets.csv -b bf-aws-tools-session-tool -d
 
 # Setup Bless. This is missing the config of blessclient.cfg. Do that step manually for now
 
