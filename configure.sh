@@ -37,9 +37,9 @@ ssh-keygen -y -f ~/.ssh/blessid > ~/.ssh/blessid.pub
 touch ~/.ssh/blessid-cert.pub
 ln -s ~/.ssh/blessid-cert.pub ~/.ssh/blessid-cert
 echo 'alias bless=/opt/awsops/python-blessclient/blessclient.run' >>~/.bashrc 
-echo 'alias stage="ssh -A $hostuser@linbast.stage.transhub.io"' >>~/.bashrc
-echo 'alias test="ssh -A $hostuser@linbast.test.transhub.io"' >>~/.bashrc
-echo 'alias prod="ssh -A $hostuser@linbast.transhub.io"' >>~/.bashrc
+echo 'alias stage="ssh -A $HOSTUSER@linbast.stage.transhub.io"' >>~/.bashrc
+echo 'alias test="ssh -A $HOSTUSER@linbast.test.transhub.io"' >>~/.bashrc
+echo 'alias prod="ssh -A $HOSTUSER@linbast.transhub.io"' >>~/.bashrc
 
 
 # Make sure that you don't get SSH warnings when logging in to a bastion server (as they sit behind a load balancer)
