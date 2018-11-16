@@ -11,13 +11,19 @@ unzip terraform_0.11.8_linux_amd64.zip
 
 #Configure .bashrc
 
-echo 'source session-tool.sh' >>~/.bashrc
-echo 'eval `ssh-agent`' >>~/.bashrc
-echo 'alias bless=/opt/awsops/python-blessclient/blessclient.run' >>~/.bashrc 
-echo 'alias stage="ssh -A $HOSTUSER@linbast.stage.transhub.io"' >>~/.bashrc
-echo 'alias test="ssh -A $HOSTUSER@linbast.test.transhub.io"' >>~/.bashrc
-echo 'alias prod="ssh -A $HOSTUSER@linbast.transhub.io"' >>~/.bashrc
+
+cat <<EOF >> ~/.bashrc
+alias prod="ssh -A $HOSTUSER@linbast.transhub.io"
+alias stage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
+alias test="ssh -A $HOSTUSER@linbast.test.transhub.io"
+alias prod="ssh -A $HOSTUSER@linbast.transhub.io"
+alias bless=/opt/awsops/python-blessclient/blessclient.run
+source session-tool.sh
+eval `ssh-agent`
+ EOF
+ 
 source ~/.bashrc
+
 
 #Setup terraform and AWS CLI / Session tools
 
@@ -29,6 +35,7 @@ echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
 #aws configure set session-tool_bucketname bf-aws-tools-session-tool --profile awsops
 #source /usr/local/bin/session-tool.sh
 #get_session -i /root/secrets.csv -b bf-aws-tools-session-tool -d
+
 
 # Setup Bless. This is missing the config of blessclient.cfg. Do that step manually for now
 
