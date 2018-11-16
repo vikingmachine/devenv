@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 echo Please enter your AWS Access Key ID:
 read aws_access_key
