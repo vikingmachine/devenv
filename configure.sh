@@ -11,17 +11,17 @@ unzip terraform_0.11.8_linux_amd64.zip
 
 #Configure .bashrc alias and for session tools script + bless ssh-agent to run on boot.
 
-mv ~/.bashrc ~/.bashrc.default
-cat <<TEXT >> ~/.bashrc
-. ~/.bashrc.default
-eval ssh-agent
-alias prod="ssh -A $HOSTUSER@linbast.transhub.io"
-alias stage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
-alias test="ssh -A $HOSTUSER@linbast.test.transhub.io"
-alias bless="/opt/awsops/python-blessclient/blessclient.run"
-source /usr/local/bin/session-tool.sh
-get_session -i /root/secrets.csv -b bf-aws-tools-session-tool -d
-TEXT
+#mv ~/.bashrc ~/.bashrc.default
+#cat <<TEXT >> ~/.bashrc
+#. ~/.bashrc.default
+#eval ssh-agent
+#alias prod="ssh -A $HOSTUSER@linbast.transhub.io"
+#alias stage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
+#alias test="ssh -A $HOSTUSER@linbast.test.transhub.io"
+#alias bless="/opt/awsops/python-blessclient/blessclient.run"
+#source /usr/local/bin/session-tool.sh
+#alias bfsession='get_session -i "/root/secrets.csv" -b "bf-aws-tools-session-tool" -d'
+#TEXT
 
 
  
