@@ -20,6 +20,7 @@ alias sshstage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
 alias sshtest="ssh -A $HOSTUSER@linbast.test.transhub.io"
 alias bless="/opt/awsops/python-blessclient/blessclient.run"
 source /usr/local/bin/session-tool.sh
+get_session -i "/root/secrets.csv" -b "bf-aws-tools-session-tool" -d
 TEXT
 
 
@@ -30,7 +31,6 @@ TEXT
 
 mv terraform session-tool.sh /usr/local/bin/
 echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> /root/secrets.csv
-get_session -i "/root/secrets.csv" -b "bf-aws-tools-session-tool" -d
 #aws configure --profile awsops set aws_access_key_id $AWS_ACCESS_KEY_ID
 #aws configure --profile awsops set aws_secret_access_key $AWS_SECRET_ACCESS_KEY_ID
 #aws configure set default.session_tool_default_profile awsops
