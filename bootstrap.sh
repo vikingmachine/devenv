@@ -5,6 +5,7 @@ read aws_access_key
 echo Please enter your AWS Secret Access Key:
 read aws_secret_key
 
+hostuser=$USER
 
 if [ -x "$(command -v docker)" ]; then
     echo "Docker is already installed"
@@ -28,6 +29,6 @@ fi
 wget https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json
 wget https://raw.githubusercontent.com/vikingmachine/devenv/master/configure.sh
 
-sudo PACKER_LOG=1 packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "HOSTUSER=$USER" build.json
+sudo PACKER_LOG=1 packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "hostuser=$hostuser" build.json
 sudo docker run --name bf-aws-dev -it local:aws-dev /bin/bash -c "source /usr/local/bin/session-tool.sh; get_session -i /root/secrets.csv -b bf-aws-tools-session-tool -d; /bin/bash"
 
