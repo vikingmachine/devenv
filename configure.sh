@@ -1,4 +1,4 @@
-#!/bin/bash -i
+#!/bin/bash -e
 
 # Setup Basefarm Session Tools
 
