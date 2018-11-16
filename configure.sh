@@ -41,8 +41,9 @@ mkdir /opt/awsops && cd /opt/awsops
 git clone https://github.com/lyft/python-blessclient.git && cd python-blessclient && make client
 sed -i "s/default='iad'/default='EU'/" blessclient/client.py
 cp blessclient.cfg.sample blessclient.cfg
+eval `ssh-agent`
 
-#Setup keys for Bless and some handy alias's
+#Setup keys for Bless.
 
 ssh-keygen -f ~/.ssh/blessid -b 4096 -t rsa -C 'Key for BLESS certificate' -N ''
 ssh-keygen -y -f ~/.ssh/blessid > ~/.ssh/blessid.pub
