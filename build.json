@@ -21,7 +21,7 @@
     		"environment_vars": [
       			"AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
       			"AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}",
-			"hostuser={{user `currentuser`}}"
+			"HOSTUSER={{user `currentuser`}}"
 			
     		],
 		"script": "./configure.sh"
