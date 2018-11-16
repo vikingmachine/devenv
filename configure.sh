@@ -10,7 +10,7 @@ wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-
 unzip terraform_0.11.8_linux_amd64.zip
 echo 'source session-tool.sh' >>~/.bashrc
 echo 'eval `ssh-agent`' >>~/.bashrc
-echo "export hostuser=$hostuser" >>~/.bashrc
+echo "export HOSTUSER=$HOSTUSER" >>~/.bashrc
 source ~/.bashrc
 
 #Setup terraform and AWS CLI / Session tools
