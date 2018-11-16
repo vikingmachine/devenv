@@ -58,7 +58,7 @@ Host *.transhub.io
 	StrictHostKeyChecking no
 	UserKnownHostsFile /dev/null
 	ServerAliveInterval 50
-	User $HOSTUSER
+	User "$HOSTUSER"
 
 TEXT
 
