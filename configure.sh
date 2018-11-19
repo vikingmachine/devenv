@@ -48,12 +48,14 @@ sed -i "s/default='iad'/default='EU'/" blessclient/client.py
 cp blessclient.cfg.sample blessclient.cfg
 
 
-#Setup keys for Bless.
+#Create keys for Bless and Github
 
 ssh-keygen -f ~/.ssh/blessid -b 4096 -t rsa -C 'Key for BLESS certificate' -N ''
 ssh-keygen -y -f ~/.ssh/blessid > ~/.ssh/blessid.pub
 touch ~/.ssh/blessid-cert.pub
 ln -s ~/.ssh/blessid-cert.pub ~/.ssh/blessid-cert
+
+ssh-keygen -f ~/.ssh/github_rsa -b 4096 -t rsa -C 'Basefarm Github key' -N ''
 
 # Make sure that you don't get SSH warnings when logging in to a bastion server (as they sit behind a load balancer)
 touch ~/.ssh/config 
