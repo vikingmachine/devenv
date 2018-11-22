@@ -32,5 +32,5 @@ fi
 wget https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json
 wget https://raw.githubusercontent.com/vikingmachine/devenv/master/configure.sh
 
-PACKER_LOG=1 packer build -var "$aws_access_key" -var "$aws_secret_key" -var "hostuser=$USER" build.json
+PACKER_LOG=1 packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "hostuser=$USER" build.json
 docker run --name bf-aws-dev -v /home/$USER/code:/root/code -it local:aws-dev /bin/bash
