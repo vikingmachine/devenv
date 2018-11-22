@@ -2,27 +2,24 @@
 
 	"variables": {
 		"hostuser": "",
-    		"aws_access_key": "",
-   		"aws_secret_key": ""
+    "aws_access_key": "",
+   	"aws_secret_key": ""
 	},
 
 	"builders": [{
 		"type": "docker",
 		"image": "ubuntu",
 		"commit": true,
-		"pull": true,
-		"volumes": {
-			"/home/{{user `currentuser`}}/.bash_history":"/root/.bash_history"
-		}
+		"pull": true
 	}],
 
 	"provisioners": [{
 		"type": "shell",
     		"environment_vars": [
-      			"AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
-      			"AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}",
-			"HOSTUSER={{user `hostuser`}}"
-			
+					"AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
+      		"AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}",
+					"HOSTUSER={{user `hostuser`}}"
+
     		],
 		"script": "./configure.sh"
 	}],
