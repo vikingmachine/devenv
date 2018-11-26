@@ -8,7 +8,7 @@ apt -y install curl nano unzip wget openssl python python-pip openssh-client git
 pip install awscli --upgrade
 wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
 wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
-unzip terraform_0.11.8_linux_amd64.zip
+unzip terraform_0.11.10_linux_amd64.zip
 
 useradd $HOSTUSER -s /bin/bash -m -g root -G sudo
 echo "$HOSTUSER:password" | sudo chpasswd
