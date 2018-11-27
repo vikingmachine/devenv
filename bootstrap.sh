@@ -29,8 +29,8 @@ else
    unzip packer_1.3.2_linux_amd64.zip
 fi
 
-wget https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json
-wget https://raw.githubusercontent.com/vikingmachine/devenv/master/configure.sh
+wget https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json -O build.json
+wget https://raw.githubusercontent.com/vikingmachine/devenv/master/configure.sh -O configure.sh
 
 PACKER_LOG=1 ./packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "hostuser=$USER" build.json
 cd ..
