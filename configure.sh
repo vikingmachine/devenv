@@ -12,13 +12,14 @@ wget https://releases.hashicorp.com/terraform/"$terraver"/terraform_"$terraver"_
 wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
 unzip terraform_"$terraver"_linux_amd64.zip
 
-useradd $HOSTUSER -s /bin/bash -m -g root -G sudo
+useradd -s /bin/bash -m -g root -G sudo $HOSTUSER
 echo "$HOSTUSER:password" | sudo chpasswd
 
 
 #Setup terraform and AWS CLI / Session tools
 
 mv terraform session-tool.sh /usr/local/bin/
+rm -rf terraform*
 echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> ~/.secrets.csv
 
 
