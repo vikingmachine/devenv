@@ -3,6 +3,10 @@
 mkdir -p ./build
 cd ./build
 
+if [ $(docker ps -a | grep bf-aws-dev) ]; then
+	docker stop bf-aws-dev
+fi
+
 docker system prune -a -f
 
 echo Please enter your AWS Access Key ID:
