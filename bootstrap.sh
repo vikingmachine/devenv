@@ -3,8 +3,9 @@
 mkdir -p ./build
 cd ./build
 
-if [ $(docker ps -a | grep bf-aws-dev) ]; then
-	docker stop bf-aws-dev
+if [ "x" != "x$(docker ps -aqf name=bf-aws-dev)" ]; then
+  docker stop $(docker ps -aqf name=bf-aws-dev)
+  docker rm $(docker ps -aqf name=bf-aws-dev)
 fi
 
 docker system prune -a -f
