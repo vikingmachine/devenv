@@ -50,7 +50,7 @@ sed -i "s/default='iad'/default='EU'/" blessclient/client.py
 cp blessclient.cfg.sample blessclient.cfg
 
 #Create bless config
-echo $bless_conf > /opt/awsops/python-blessclient/blessclient.cfg
+echo "$bless_conf" > /opt/awsops/python-blessclient/blessclient.cfg
 
 #Create keys for Bless and Github
 ssh-keygen -f ~/.ssh/blessid -b 4096 -t rsa -C 'Key for BLESS certificate' -N ''

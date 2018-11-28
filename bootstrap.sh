@@ -10,12 +10,11 @@ read aws_access_key
 echo Please enter your AWS Secret Access Key:
 read aws_secret_key
 
-echo 'Go to the "Create bless config-file (linux and mac)" section at this URL: https://int.basefarm.com/x/TgUWFw and copy the sections content and paste in nano.'
-read -p 'Press [Enter] to open nano and save the config file automatically.'
-tmp_bless_confifile=$(mktemp)
-nano "$tmp_bless_conf"
-bless_conf=$(grep -v TEXT $tmp_bless_conffile)
-
+echo 'Go to the "Create bless config-file (linux and mac)" section at this URL: https://int.basefarm.com/x/TgUWFw and copy the sections content and paste into your editori before saving it as the opened file.'
+read -p 'Press [Enter] to open nano and save the config file automatically.' asd
+tmp_bless_configfile=$(mktemp)
+$EDITOR "$tmp_bless_configfile"
+bless_conf="$(grep -v TEXT $tmp_bless_configfile)"
 
 if [ -x "$(command -v docker)" ]; then
     echo "Docker is already installed"
