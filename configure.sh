@@ -44,19 +44,15 @@ echo 'eval `ssh-agent`' >> ~/.bashrc
 
 
 # Setup Bless.
-
 mkdir /opt/awsops && cd /opt/awsops
 git clone https://github.com/lyft/python-blessclient.git && cd python-blessclient && make client
 sed -i "s/default='iad'/default='EU'/" blessclient/client.py
 cp blessclient.cfg.sample blessclient.cfg
 
 #Create bless config
-#read -p 'Go to "Create bless config-file (linux and mac)" at this URL: https://int.basefarm.com/x/TgUWFw and paste the contents here.' bless_config
-#echo $bless_config | grep -v "TEXT" > /opt/awsops/python-blessclient/blessclient.cfg
-
+echo $bless_conf > /opt/awsops/python-blessclient/blessclient.cfg
 
 #Create keys for Bless and Github
-
 ssh-keygen -f ~/.ssh/blessid -b 4096 -t rsa -C 'Key for BLESS certificate' -N ''
 ssh-keygen -y -f ~/.ssh/blessid > ~/.ssh/blessid.pub
 touch ~/.ssh/blessid-cert.pub

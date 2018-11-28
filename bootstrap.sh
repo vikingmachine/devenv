@@ -10,6 +10,12 @@ read aws_access_key
 echo Please enter your AWS Secret Access Key:
 read aws_secret_key
 
+echo 'Go to the "Create bless config-file (linux and mac)" section at this URL: https://int.basefarm.com/x/TgUWFw and copy the sections content and paste in nano.'
+read -p 'Press [Enter] to open nano and save the config file automatically.'
+tmp_bless_confifile=$(mktemp)
+nano "$tmp_bless_conf"
+bless_conf=$(grep -v TEXT $tmp_bless_conffile)
+
 
 if [ -x "$(command -v docker)" ]; then
     echo "Docker is already installed"
@@ -32,7 +38,7 @@ fi
 wget https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json -O build.json
 wget https://raw.githubusercontent.com/vikingmachine/devenv/master/configure.sh -O configure.sh
 
-PACKER_LOG=1 ./packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "hostuser=$USER" build.json
+PACKER_LOG=1 ./packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "hostuser=$USER" -var "bless_conf=$bless_conf" build.json
 cd ..
 
 docker run --name bf-aws-dev -v /home/$USER/code:/root/code -it local:aws-dev /bin/bash
