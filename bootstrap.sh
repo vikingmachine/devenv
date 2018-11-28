@@ -10,9 +10,8 @@ read aws_access_key
 echo Please enter your AWS Secret Access Key:
 read aws_secret_key
 
-echo 'Go to the "Create bless config-file (linux and mac)" section at this URL: https://int.basefarm.com/x/TgUWFw and copy the sections content and paste into your editori before saving it as the opened file.'
-read -p 'Press [Enter] to open nano and save the config file automatically.' asd
 tmp_bless_configfile=$(mktemp)
+echo 'Go to the "Create bless config-file (linux and mac)" section at this URL: https://int.basefarm.com/x/TgUWFw and copy the sections content and paste here, and remove this line. Then save the file and exit.' > "$tmp_bless_configfile"
 $EDITOR "$tmp_bless_configfile"
 bless_conf="$(grep -v TEXT $tmp_bless_configfile)"
 
