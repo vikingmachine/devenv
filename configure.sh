@@ -6,7 +6,7 @@
 terraver=0.11.10
 
 apt update
-apt -y install curl nano unzip wget openssl python python-pip openssh-client git python-virtualenv gcc sudo
+apt -y install curl nano unzip wget openssl python python-pip openssh-client git python-virtualenv gcc sudo kpcli
 pip install awscli --upgrade
 wget https://releases.hashicorp.com/terraform/"$terraver"/terraform_"$terraver"_linux_amd64.zip
 wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
