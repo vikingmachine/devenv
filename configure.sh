@@ -1,55 +1,32 @@
 #!/bin/bash -e
 
-
-# Setup Basefarm Session Tools
-
-terraver=0.11.10
-
+# Install required packaged
 apt update
 apt -y install curl nano unzip wget groff openssl python python-pip python3 python3-pip openssh-client git python-virtualenv gcc sudo kpcli
+
+# Setup terraform and AWS CLI
 pip install awscli --upgrade
 aws configure set region eu-west-1
+
+# Setup terraform
+terraver=0.11.10
 wget --no-dns-cache --no-cache https://releases.hashicorp.com/terraform/"$terraver"/terraform_"$terraver"_linux_amd64.zip
-wget --no-dns-cache --no-cache https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
 unzip terraform_"$terraver"_linux_amd64.zip
-
-useradd -s /bin/bash -m -g root -G sudo $HOSTUSER
-echo "$HOSTUSER:password" | sudo chpasswd
-
-
-#Setup terraform and AWS CLI / Session tools
-
 mv terraform session-tool.sh /usr/local/bin/
 rm -rf terraform*
+
+# Setup Basefarm Session Tools
+wget --no-dns-cache --no-cache https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
 echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> ~/.secrets.csv
-
-
-
-#Configure .bashrc alias and for session tools script + bless ssh-agent to run on boot.
-
-mv ~/.bashrc ~/.bashrc.default
-cat <<TEXT >> ~/.bashrc
-. ~/.bashrc.default
-alias sshprod="ssh -A $HOSTUSER@linbast.transhub.io"
-alias sshstage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
-alias sshtest="ssh -A $HOSTUSER@linbast.test.transhub.io"
-
-eval `ssh-agent`
-source /usr/local/bin/session-tool.sh
-get_session -i "/root/.secrets.csv" -b "bf-aws-tools-session-tool" -d
-
-complete -C '/usr/local/bin/aws_completer' aws
-TEXT
 
 # Setup Bless.
 pip3 install git+https://github.com/basefarm/python-blessclient.git --upgrade
 
 #Create bless config
 mkdir -p "$HOME/.aws/"
-#echo "$BLESS_CONF" > /opt/awsops/python-blessclient/blessclient.cfg
 echo "$BLESS_CONF" > "$HOME/.aws/blessclient.cfg"
 
-#Create keys for Bless and Github
+# Create keys for Bless and Github
 ssh-keygen -f ~/.ssh/blessid -b 4096 -t rsa -C 'Key for BLESS certificate' -N ''
 ssh-keygen -y -f ~/.ssh/blessid > ~/.ssh/blessid.pub
 touch ~/.ssh/blessid-cert.pub
@@ -70,4 +47,19 @@ Host github.com
   Hostname github.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/github_rsa
+TEXT
+
+# Configure .bashrc alias and for session tools script + bless ssh-agent to run on boot.
+mv ~/.bashrc ~/.bashrc.default
+cat <<TEXT >> ~/.bashrc
+. ~/.bashrc.default
+alias sshprod="ssh -A $HOSTUSER@linbast.transhub.io"
+alias sshstage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
+alias sshtest="ssh -A $HOSTUSER@linbast.test.transhub.io"
+
+eval `ssh-agent`
+source /usr/local/bin/session-tool.sh
+get_session -i "/root/.secrets.csv" -b "bf-aws-tools-session-tool" -d
+
+complete -C '/usr/local/bin/aws_completer' aws
 TEXT
