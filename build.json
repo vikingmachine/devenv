@@ -19,7 +19,7 @@
 					"AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
       		"AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}",
 					"HOSTUSER={{user `hostuser`}}"
-
+					"BLESS_CONF={{user `bless_conf`}}"
     		],
 		"script": "./configure.sh"
 	}],

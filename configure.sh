@@ -6,7 +6,7 @@
 terraver=0.11.10
 
 apt update
-apt -y install curl nano unzip wget groff openssl python python-pip openssh-client git python-virtualenv gcc sudo kpcli
+apt -y install curl nano unzip wget groff openssl python python-pip python3 python3-pip openssh-client git python-virtualenv gcc sudo kpcli
 pip install awscli --upgrade
 wget https://releases.hashicorp.com/terraform/"$terraver"/terraform_"$terraver"_linux_amd64.zip
 wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
@@ -45,13 +45,14 @@ echo 'eval `ssh-agent`' >> ~/.bashrc
 
 
 # Setup Bless.
-mkdir /opt/awsops && cd /opt/awsops
-git clone https://github.com/lyft/python-blessclient.git && cd python-blessclient && make client
-sed -i "s/default='iad'/default='EU'/" blessclient/client.py
-cp blessclient.cfg.sample blessclient.cfg
+#mkdir /opt/awsops && cd /opt/awsops
+#git clone https://github.com/lyft/python-blessclient.git && cd python-blessclient && make client
+#sed -i "s/default='iad'/default='EU'/" blessclient/client.py
+#cp blessclient.cfg.sample blessclient.cfg
+pip3 install git+https://github.com/basefarm/python-blessclient.git --upgrade
 
 #Create bless config
-echo "$bless_conf" > /opt/awsops/python-blessclient/blessclient.cfg
+echo "$BLESS_CONF" > /opt/awsops/python-blessclient/blessclient.cfg
 
 #Create keys for Bless and Github
 ssh-keygen -f ~/.ssh/blessid -b 4096 -t rsa -C 'Key for BLESS certificate' -N ''
