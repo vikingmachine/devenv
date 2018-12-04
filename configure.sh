@@ -33,10 +33,11 @@ alias sshprod="ssh -A $HOSTUSER@linbast.transhub.io"
 alias sshstage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
 alias sshtest="ssh -A $HOSTUSER@linbast.test.transhub.io"
 alias bless="/opt/awsops/python-blessclient/blessclient.run"
+
 source /usr/local/bin/session-tool.sh
 get_session -i "/root/.secrets.csv" -b "bf-aws-tools-session-tool" -d
 
-
+complete -C '/usr/local/bin/aws_completer' aws
 TEXT
 
 echo 'eval `ssh-agent`' >> ~/.bashrc
