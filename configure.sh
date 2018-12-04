@@ -12,11 +12,12 @@ aws configure set region eu-west-1
 terraver=0.11.10
 wget --no-dns-cache --no-cache https://releases.hashicorp.com/terraform/"$terraver"/terraform_"$terraver"_linux_amd64.zip
 unzip terraform_"$terraver"_linux_amd64.zip
-mv terraform session-tool.sh /usr/local/bin/
+mv terraform /usr/local/bin/
 rm -rf terraform*
 
 # Setup Basefarm Session Tools
 wget --no-dns-cache --no-cache https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
+mv session-tool.sh /usr/local/bin/
 echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> ~/.secrets.csv
 
 # Setup Bless.
