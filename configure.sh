@@ -32,23 +32,15 @@ cat <<TEXT >> ~/.bashrc
 alias sshprod="ssh -A $HOSTUSER@linbast.transhub.io"
 alias sshstage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
 alias sshtest="ssh -A $HOSTUSER@linbast.test.transhub.io"
-alias bless="/opt/awsops/python-blessclient/blessclient.run"
 
+eval `ssh-agent`
 source /usr/local/bin/session-tool.sh
 get_session -i "/root/.secrets.csv" -b "bf-aws-tools-session-tool" -d
 
 complete -C '/usr/local/bin/aws_completer' aws
 TEXT
 
-echo 'eval `ssh-agent`' >> ~/.bashrc
-
-
-
 # Setup Bless.
-#mkdir /opt/awsops && cd /opt/awsops
-#git clone https://github.com/lyft/python-blessclient.git && cd python-blessclient && make client
-#sed -i "s/default='iad'/default='EU'/" blessclient/client.py
-#cp blessclient.cfg.sample blessclient.cfg
 pip3 install git+https://github.com/basefarm/python-blessclient.git --upgrade
 
 #Create bless config
