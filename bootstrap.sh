@@ -38,8 +38,8 @@ else
   unzip packer_1.3.2_linux_amd64.zip
 fi
 
-wget https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json -O build.json
-wget https://raw.githubusercontent.com/vikingmachine/devenv/master/configure.sh -O configure.sh
+wget --no-dns-cache --no-cache https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json -O build.json
+wget --no-dns-cache --no-cache https://raw.githubusercontent.com/vikingmachine/devenv/master/configure.sh -O configure.sh
 
 PACKER_LOG=1 ./packer build -var "aws_access_key=$aws_access_key" -var "aws_secret_key=$aws_secret_key" -var "hostuser=$USER" -var "bless_conf=$bless_conf" build.json | tee packer.log
 cd ..
