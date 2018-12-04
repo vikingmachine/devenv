@@ -21,21 +21,21 @@ $EDITOR "$tmp_bless_configfile"
 bless_conf="$(cat "$tmp_bless_configfile" | grep -v TEXT)"
 
 if [ -x "$(command -v docker)" ]; then
-    echo "Docker is already installed"
+  echo "Docker is already installed"
 else
-   apt-get update
-   apt install -y docker-ce
-   systemctl enable docker
-   groupadd docker
-   usermod -aG docker $USER
+  apt-get update
+  apt install -y docker-ce
+  systemctl enable docker
+  groupadd docker
+  usermod -aG docker $USER
 fi
 
 
 if [ -f "./packer" ]; then
-    echo "Packer is already installed"
+  echo "Packer is already installed"
 else
-   wget https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_linux_amd64.zip
-   unzip packer_1.3.2_linux_amd64.zip
+  wget https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_linux_amd64.zip
+  unzip packer_1.3.2_linux_amd64.zip
 fi
 
 wget https://raw.githubusercontent.com/vikingmachine/devenv/master/build.json -O build.json

@@ -58,17 +58,15 @@ ssh-keygen -f ~/.ssh/github_rsa -b 4096 -t rsa -C 'Basefarm Github key' -N ''
 # Make sure that you don't get SSH warnings when logging in to a bastion server (as they sit behind a load balancer)
 touch ~/.ssh/config
 cat > ~/.ssh/config <<"TEXT"
-
 Host *.transhub.io
-	StrictHostKeyChecking no
-	UserKnownHostsFile /dev/null
-	ServerAliveInterval 50
-	User "$HOSTUSER"
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  ServerAliveInterval 50
+  User "$HOSTUSER"
 
 Host github.com
-        User git
-        Hostname github.com
-        PreferredAuthentications publickey
-        IdentityFile ~/.ssh/github_rsa
-
+  User git
+  Hostname github.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/github_rsa
 TEXT

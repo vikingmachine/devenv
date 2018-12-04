@@ -1,35 +1,34 @@
 {
 
-	"variables": {
-		"hostuser": "",
+.."variables": {
+...."hostuser": "",
     "aws_access_key": "",
-   	"aws_secret_key": ""
-	},
+   .."aws_secret_key": ""
+..},
 
-	"builders": [{
-		"type": "docker",
-		"image": "ubuntu",
-		"commit": true,
-		"pull": true
-	}],
+.."builders": [{
+...."type": "docker",
+...."image": "ubuntu",
+...."commit": true,
+...."pull": true
+..}],
 
-	"provisioners": [{
-		"type": "shell",
-    		"environment_vars": [
-					"AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
-      		"AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}",
-					"HOSTUSER={{user `hostuser`}}",
-					"BLESS_CONF={{user `bless_conf`}}"
-    		],
-		"script": "./configure.sh"
-	}],
+.."provisioners": [{
+...."type": "shell",
+      "environment_vars": [
+.........."AWS_ACCESS_KEY_ID={{user `aws_access_key`}}",
+      ...."AWS_SECRET_ACCESS_KEY_ID={{user `aws_secret_key`}}",
+.........."HOSTUSER={{user `hostuser`}}",
+.........."BLESS_CONF={{user `bless_conf`}}"
+    ....],
+...."script": "./configure.sh"
+..}],
 
-	"post-processors": [
-		[{
-			"type": "docker-tag",
-			"repository": "local",
-			"tag": "aws-dev"
-		}]
-	]
-
+.."post-processors": [
+....[{
+......"type": "docker-tag",
+......"repository": "local",
+......"tag": "aws-dev"
+....}]
+..]
 }
