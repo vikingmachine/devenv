@@ -6,8 +6,9 @@
 terraver=0.11.10
 
 apt update
-apt -y install bash-completion curl nano unzip wget groff openssl python3 python3-pip openssh-client git python-virtualenv gcc sudo kpcli
-pip3 install awscli --upgrade
+apt -y install curl nano unzip wget groff openssl python python-pip python3 python3-pip openssh-client git python-virtualenv gcc sudo kpcli
+pip install awscli --upgrade
+aws configure set region eu-west-1
 wget https://releases.hashicorp.com/terraform/"$terraver"/terraform_"$terraver"_linux_amd64.zip
 wget https://raw.githubusercontent.com/basefarm/aws-session-tool/master/session-tool.sh
 unzip terraform_"$terraver"_linux_amd64.zip
