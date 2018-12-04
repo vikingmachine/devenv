@@ -52,7 +52,9 @@ echo 'eval `ssh-agent`' >> ~/.bashrc
 pip3 install git+https://github.com/basefarm/python-blessclient.git --upgrade
 
 #Create bless config
-echo "$BLESS_CONF" > /opt/awsops/python-blessclient/blessclient.cfg
+mkdir -p "$HOME/.aws/"
+#echo "$BLESS_CONF" > /opt/awsops/python-blessclient/blessclient.cfg
+echo "$BLESS_CONF" > "$HOME/.aws/blessclient.cfg"
 
 #Create keys for Bless and Github
 ssh-keygen -f ~/.ssh/blessid -b 4096 -t rsa -C 'Key for BLESS certificate' -N ''
