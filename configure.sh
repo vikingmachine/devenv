@@ -4,7 +4,8 @@
 apt update
 apt -y install curl nano unzip wget groff openssl python python-pip python3 python3-pip openssh-client git python-virtualenv gcc sudo kpcli
 
-# Setup terraform and AWS CLI
+# Setup AWS CLI
+mkdir -p "$HOME/.aws/"
 pip install awscli --upgrade
 aws configure set region eu-west-1
 
@@ -24,7 +25,6 @@ echo "$AWS_ACCESS_KEY_ID,$AWS_SECRET_ACCESS_KEY_ID" >> ~/.secrets.csv
 pip3 install git+https://github.com/basefarm/python-blessclient.git --upgrade
 
 #Create bless config
-mkdir -p "$HOME/.aws/"
 echo "$BLESS_CONF" > "$HOME/.aws/blessclient.cfg"
 
 # Create keys for Bless and Github
