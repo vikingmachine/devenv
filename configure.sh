@@ -7,7 +7,6 @@ apt -y install curl nano unzip wget groff openssl python python-pip python3 pyth
 # Setup AWS CLI
 mkdir -p "$HOME/.aws/"
 pip install awscli --upgrade
-aws configure set region eu-west-1
 
 # Setup terraform
 terraver=0.11.10
@@ -57,6 +56,13 @@ cat <<TEXT >> ~/.bashrc
 alias sshprod="ssh -A $HOSTUSER@linbast.transhub.io"
 alias sshstage="ssh -A $HOSTUSER@linbast.stage.transhub.io"
 alias sshtest="ssh -A $HOSTUSER@linbast.test.transhub.io"
+
+if [ "x$(aws configure get region)" == "x" ]; then
+  echo "Setting region."
+  aws configure set region "eu-west-1"
+else
+  echo "AWS region already set."
+fi
 
 eval `ssh-agent`
 source /usr/local/bin/session-tool.sh
